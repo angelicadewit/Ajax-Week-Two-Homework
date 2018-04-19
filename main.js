@@ -1,17 +1,17 @@
-const jsonData = {
-    "type":"string",
-    "content":"Angelica"
-}
 
 const myButton = document.querySelector('.postKey');
 const myPostInput = document.querySelector("[name='myPostInput']");
+const myContentInput = document.querySelector("[name='myInput']");
 
 let createMessage = function(event){
     event.preventDefault();
-    event.stopPropagation();
+    // event.stopPropagation();
     let key = myPostInput.value;
     console.log(key);
-    axios.post("http://circuslabs.net:3000/data/" + key)
+    axios.post("http://circuslabs.net:3000/data/" + key, {
+        "type":"string",
+        "content":myContentInput.value
+    })
     .then(function (response) {
         console.log('here is the response data for key:', response);
         console.log('here is the data response data for key:', response.data);
